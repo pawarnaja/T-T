@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ผมจะยอมไม่กินไก่เพื่อคุณ!</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #fcefee;
+    }
+    .container {
+      text-align: center;
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    h1 {
+      font-size: 2rem;
+      color: #ff4757;
+    }
+    img {
+      width: 250px;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+    button {
+      margin: 10px;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .yes-btn {
+      background-color: #2ed573;
+      color: #fff;
+    }
+    .no-btn {
+      background-color: #ff6b81;
+      color: #fff;
+    }
+    button:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>ขอเป็นจิ้งจกในชีวิตคุณได้มั้ย? 🥰</h1>
+    <img src="https://tenor.com/rmzKJB32ygF.gif" alt="Cute Gif">
+    <div>
+      <button class="yes-btn" onclick="yesResponse()">ได้สิ! 🤗</button>
+      <button class="no-btn" id="noButton" onclick="noResponse()">ไม่เอา! 😝</button>
+    </div>
+  </div>
+
+  <script>
+    let noCounter = 0; // ตัวนับจำนวนการกด "ไม่"
+    const noButton = document.getElementById("noButton");
+
+    function yesResponse() {
+      document.body.innerHTML = `
+        <div style="text-align: center; margin-top: 50px;">
+          <h1 style="color: #2ed573;">เย้! ต่อไปนี้จะเป็นจิ้งจกที่ดีที่สุดเลยนะ! 🥰</h1>
+          <img src="https://tenor.com/mKNGkyOGX0G.gif" alt="Happy GIF" width="250">
+          <p style="color: #555;">ขอบคุณที่ให้โอกาส 💕</p>
+        </div>
+      `;
+    }
+
+    function noResponse() {
+      noCounter++;
+      const messages = [
+        "แน่ใจหรอ? 😢",
+        "คิดให้ดี ๆ นะ! 🥺",
+        "ไม่ให้กดนะ! ย้อนกลับไปเดี๋ยวนี้ >:O",
+        "ยอมก็ได้! เดี๋ยวเราโตกว่านี้แล้วจะกลับมาถามใหม่ 😤"
+      ];
+
+      if (noCounter < messages.length) {
+        noButton.innerText = messages[noCounter]; // เปลี่ยนข้อความบนปุ่ม "ไม่"
+      } else {
+        alert("ยอมก็ได้...เดี๋ยวโตกว่านี้จะกลับมาถามใหม่! 😤");
+        noButton.style.display = "none"; // ซ่อนปุ่ม "ไม่"
+      }
+    }
+  </script>
+</body>
+</html>
